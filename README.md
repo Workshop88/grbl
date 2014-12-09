@@ -19,6 +19,8 @@ Grbl includes full acceleration management with look ahead. That means the contr
 * Lead Developer [_2009 - 2011_]: Simen Svale Skogsrud (Norway). aka The Originator/Creator/Pioneer/Father of Grbl.
 
 ***
+ **Workshop 88 mod for auto Z axis touch-off**
+Workshop 88 has modified grbl0.9g to support more than 2 startup blocks, allowing an automated Carvey-style Z axis homing to the workpiece surface.  This modification is still in progress...
 
 _**Master Branch:**_
 * [Grbl v0.9g Atmega328p 16mhz 115200baud with generic defaults](http://bit.ly/1m8E1Qa) _(2014-09-05)_
