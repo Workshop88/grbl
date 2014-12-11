@@ -94,7 +94,13 @@
 // and addresses are defined in settings.h. With the current settings, up to 2 startup blocks may
 // be stored and executed in order. These startup blocks would typically be used to set the g-code
 // parser state depending on user preferences.
-#define N_STARTUP_LINE 2 // Integer (1-2)
+// Auto Z touch-off requires more startup blocks.  Added E_LINE_BUFFER_SIZE to handle this.
+// If this value is changed, also change E_LINE_BUFFER_SIZE below!
+#define N_STARTUP_LINE 5 // Integer (1-5)
+
+// E_LINE_BUFFER_SIZE smaller to allow more startup lines - jw
+#define E_LINE_BUFFER_SIZE 33  //jw
+
 
 // Number of floating decimal points printed by Grbl for certain value types. These settings are 
 // determined by realistic and commonly observed values in CNC machines. For example, position

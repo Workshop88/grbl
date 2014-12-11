@@ -38,8 +38,8 @@ settings_t settings;
 // Method to store startup lines into EEPROM
 void settings_store_startup_line(uint8_t n, char *line)
 {
-  uint32_t addr = n*(LINE_BUFFER_SIZE+1)+EEPROM_ADDR_STARTUP_BLOCK;
-  memcpy_to_eeprom_with_checksum(addr,(char*)line, LINE_BUFFER_SIZE);
+  uint32_t addr = n*(E_LINE_BUFFER_SIZE+1)+EEPROM_ADDR_STARTUP_BLOCK; //jw
+  memcpy_to_eeprom_with_checksum(addr,(char*)line, E_LINE_BUFFER_SIZE); //jw
 }
 
 
@@ -118,12 +118,10 @@ void settings_clear_parameters() {
 
 // Helper function to clear the EEPROM space containing the startup lines.
 void settings_clear_startup_lines() {
-  #if N_STARTUP_LINE > 0
-  eeprom_put_char(EEPROM_ADDR_STARTUP_BLOCK, 0);
-  #endif
-  #if N_STARTUP_LINE > 1
-  eeprom_put_char(EEPROM_ADDR_STARTUP_BLOCK+(LINE_BUFFER_SIZE+1), 0);
-  #endif
+  int i;
+  for(i=0;i<N_STARTUP_LINE;i++){
+  	eeprom_put_char(EEPROM_ADDR_STARTUP_BLOCK+i*(E_LINE_BUFFER_SIZE+1), 0);
+  	}//end for i putting nulls in  - jw
 }
 
 
@@ -134,8 +132,8 @@ void settings_clear_build_info() { eeprom_put_char(EEPROM_ADDR_BUILD_INFO , 0); 
 // Reads startup line from EEPROM. Updated pointed line string data.
 uint8_t settings_read_startup_line(uint8_t n, char *line)
 {
-  uint32_t addr = n*(LINE_BUFFER_SIZE+1)+EEPROM_ADDR_STARTUP_BLOCK;
-  if (!(memcpy_from_eeprom_with_checksum((char*)line, addr, LINE_BUFFER_SIZE))) {
+  uint32_t addr = n*(E_LINE_BUFFER_SIZE+1)+EEPROM_ADDR_STARTUP_BLOCK;  //jw
+  if (!(memcpy_from_eeprom_with_checksum((char*)line, addr, E_LINE_BUFFER_SIZE))) {  //jw
     // Reset line with default value
     line[0] = 0; // Empty line
     settings_store_startup_line(n, line);
