@@ -60,6 +60,6 @@ void protocol_auto_cycle_start();
 void protocol_buffer_synchronize();
 
 // Disables startup blocks on reset (can avoid crashes with Easel and Smart Clamp)  jw
-//#define DISABLE_STARTUP_ON_RESET
+#define DISABLE_STARTUP_ON_RESET
 
 #endif

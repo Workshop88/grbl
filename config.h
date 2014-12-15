@@ -36,7 +36,8 @@
 
 
 // Default settings. Used when resetting EEPROM. Change to desired name in defaults.h
-#define DEFAULTS_GENERIC
+//#define DEFAULTS_GENERIC
+#define DEFAULTS_W88_SHAPEOKO_2
 
 // Serial baud rate
 #define BAUD_RATE 115200
@@ -130,7 +131,8 @@
 // Enables a second coolant control pin via the mist coolant g-code command M7 on the Arduino Uno
 // analog pin 5. Only use this option if you require a second coolant control pin.
 // NOTE: The M8 flood coolant control pin on analog pin 4 will still be functional regardless.
-// #define ENABLE_M7 // Disabled by default. Uncomment to enable.
+// Comments above are wrong: flood is on A3, mist on A4.  jw
+ #define ENABLE_M7 // Disabled by default. Uncomment to enable.  //jw
 
 // ---------------------------------------------------------------------------------------
 // ADVANCED CONFIGURATION OPTIONS:

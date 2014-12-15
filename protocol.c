@@ -83,7 +83,12 @@ void protocol_main_loop()
   } else {
     // All systems go!
     sys.state = STATE_IDLE; // Set system to ready. Clear all state flags.
+    // Normally, startup blocks are run on first start or reset.  When using
+    // startup blocks for auto Z axis zero with a Smart Clamp after homing, 
+    // it's inappropriate (and dangerous!) to run the Z axis touch off after reset.
+#ifndef DISABLE_STARTUP_ON_RESET //jw
     system_execute_startup(line); // Execute startup script.
+#endif
   }
     
   // ---------------------------------------------------------------------------------  
